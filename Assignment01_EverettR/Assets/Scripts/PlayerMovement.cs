@@ -4,6 +4,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float rotateSpeed = 175f;
+    [SerializeField] float score = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -36,6 +37,12 @@ public class PlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             Debug.Log("'watch where your going!'");
+        }
+        if (collision.collider.CompareTag("Coin"))
+        {
+            Destroy(collision.gameObject);
+            score++;
+            Debug.Log("Score:" + score);
         }
     }
 }
